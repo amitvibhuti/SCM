@@ -49,6 +49,7 @@
     <Compile Include="EntityList.cs" />
     <Compile Include="EntityObjectAttribute.cs" />
     <Compile Include="EnumerationEntity.cs" />
+    <Compile Include="DatedEntity.cs" />
     <Compile Include="NamedEntity.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="RootEntity.cs" />

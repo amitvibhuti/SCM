@@ -12,7 +12,7 @@ namespace Vibe.SupplyChain
     {
         [DataMember]
         [EntityObjectAttribute(Mandate = Mandate.Required, Sequence = 2, Accessibility = Accessibility.Edit)]
-        public string Name { get; set; }
+        public virtual string Name { get; set; }
         public NamedEntity(Entity parent):base(parent)
         { }
         public override string ToString()

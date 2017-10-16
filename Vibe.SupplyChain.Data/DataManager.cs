@@ -10,13 +10,22 @@ namespace Vibe.SupplyChain.Data
 {
     public class DataManager
     {
+        Action<bool> _propagate { get; set; }
+        public void Propagate()
+        {
+            if (_propagate != null)
+                _propagate(true);
+        }
         public IData Data { get; set; }
-        public DataManager():this(false)
+        public DataManager() : this(false, (t)=>{ })
         { }
-        public DataManager(bool reset)
+        public DataManager(Action<bool> propagate) : this(false, propagate)
+        { }
+        public DataManager(bool reset, Action<bool> propagate)
         {
             try
             {
+                _propagate = propagate;
                 string datasource = ConfigurationManager.AppSettings["DataSource"];
                 if (String.IsNullOrEmpty(datasource))
                     return;
@@ -41,14 +50,18 @@ namespace Vibe.SupplyChain.Data
                 throw new Exception(exc.InnerException.Message);
             }
         }
-        public static DataManager Reset()
+        public static DataManager Reset(Action<bool> propagate)
         {
-            return new DataManager(true);
+            DataManager dm = new DataManager(true, propagate);
+            dm.Propagate();
+            return dm;
+            
         }
         public void Import(string json)
         {
             Data.Import(json);
             Data.LinkParent();
+            Propagate();
         }
     }
 }

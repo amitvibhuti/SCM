@@ -47,7 +47,7 @@ namespace Vibe.SupplyChain.Win
                         break;
             }
 
-            ((UserControl)form).AutoScroll = true;
+            ((UserControl)form).AutoScroll = false;
             ((UserControl)form).Padding = new Padding(2);
             //((UserControl)form).Dock = DockStyle.Fill;
             ((UserControl)form).Show();

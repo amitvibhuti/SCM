@@ -28,7 +28,7 @@ namespace Vibe.SupplyChain.Win
             _manager = manager == null ? new DataManager() : manager;
             Console.SetOut(_eventwriter);
             Reload();
-            Console.WriteLine("Form loaded");
+            Console.WriteLine("Tree view initialized");
         }
         public void Reload()
         {
@@ -38,7 +38,6 @@ namespace Vibe.SupplyChain.Win
         }
         private TreeNode AddNode(TreeNode node, string key, string text)
         {
-            Console.WriteLine(" Add node:" + key);
             if (treeViewRoot.InvokeRequired)
                 return (TreeNode)treeViewRoot.Invoke(new Func<TreeNode, string, string, TreeNode>(AddNode), node, key, text);
             else
@@ -57,7 +56,6 @@ namespace Vibe.SupplyChain.Win
         }
         private void AddImageIndex(TreeNode node, int imgId)
         {
-            Console.WriteLine(" Add image index:" + node.Text);
             if (treeViewRoot.InvokeRequired)
                 treeViewRoot.Invoke(new Action<TreeNode, int>(AddImageIndex), node, imgId);
             else
@@ -70,7 +68,6 @@ namespace Vibe.SupplyChain.Win
         }
         private void UpdateNodeText(TreeNode node, string text)
         {
-            Console.WriteLine(" Update node text:" + node.Text);
             if (treeViewRoot.InvokeRequired)
                 treeViewRoot.Invoke(new Action<TreeNode, string>(UpdateNodeText), node, text);
             else
@@ -82,14 +79,19 @@ namespace Vibe.SupplyChain.Win
         }
         public void RebindInThread()
         {
-            Thread t = new Thread(new ThreadStart(RebindAllNodes));                        
-            t.Start();
-            t.Join();
+            BackgroundWorker backgroundWorker = new BackgroundWorker();
+            backgroundWorker.DoWork += (sender, e) => { RebindAllNodes(); };
+            backgroundWorker.RunWorkerCompleted += BackgroundWorker_RunWorkerCompleted;
+            backgroundWorker.RunWorkerAsync();
+        }
+
+        private void BackgroundWorker_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
+        {
             treeViewRoot.Nodes[0].Expand();
         }
+
         public void RebindAllNodes()
         {
-            Console.WriteLine(" Root:" + _manager.Data.Root.Name);
             TreeNode tn = null;
             if (!treeViewRoot.Nodes.ContainsKey(_manager.Data.Root.ID.ToString()))
             {
@@ -113,7 +115,6 @@ namespace Vibe.SupplyChain.Win
             if (elist.EntityObjectAttribute != null 
                 && elist.EntityObjectAttribute.Accessibility == Accessibility.NoView)
                 return false;
-            Console.WriteLine(" BindNodes:" + elist.GetType().Name + "-" + elist.Name);
             TreeNode tc = null;
             if (!node.Nodes.ContainsKey(elist.Name))
             {
@@ -138,7 +139,6 @@ namespace Vibe.SupplyChain.Win
         }
         public bool BindNode(TreeNode node, Entity e, EntityList parentList, int index)
         {
-            Console.WriteLine(" BindNode:" + e.GetType().Name + "-" + e.ID);
             TreeNode tn = null;
             if (!node.Nodes.ContainsKey(e.ID.ToString()))
             {
@@ -177,10 +177,12 @@ namespace Vibe.SupplyChain.Win
                         }                        
                     }
                     contextMenuStrip1.Items.Add("Delete", Resource.delete, (s, e1) => {
+                        Console.WriteLine(entParam.Entity.EntityType + ":" + entParam.Entity.ID + " deleted.");
                         _manager.Data.DeleteEntity(entParam.EntityList, entParam.Entity);
                         TreeNode pNode = e.Node.Parent;
                         e.Node.Remove();
                         RebindInThread();
+                        _manager.Propagate();
                     });
                 }
                 else if (e.Node.Tag is EntityParam<EntityList>)
@@ -217,10 +219,11 @@ namespace Vibe.SupplyChain.Win
         }
         public void ShowEntityList(EntityParam<EntityList> eParam)
         {
+            EntityList elist = eParam.EntityList;
+            Console.WriteLine("Showing " + elist.Entity.Hierarchy + " >> " + elist.Name);
             splitContainer2.Panel2Collapsed = true;
             splitContainer3.Panel2Collapsed = true;
             pnlChart.Controls.Clear();
-            EntityList elist = eParam.EntityList;
             pnlEntity.Tag = elist;
             lblNavigation.Text = elist.Entity.Hierarchy;
             pnlEntity.Controls.Clear();
@@ -244,13 +247,13 @@ namespace Vibe.SupplyChain.Win
             splitContainer3.Panel2Collapsed = true;
             pnlChart.Controls.Clear();
             Entity ent = eParam.Entity;
+            Console.WriteLine("Showing " + ent.Hierarchy);
             lblNavigation.Text = ent.Hierarchy;
             pnlEntity.Controls.Clear();
             pnlEntityAuto.Controls.Clear();
             pnlEntity.Tag = ent;
             btnExportToPDF.Visible = false;
-            Console.WriteLine("AfterSelect " + ent.ToString());
-
+            
             TableLayoutPanel tabEdit = new TableLayoutPanel();
             tabEdit.Name = "Edit";
             tabEdit.CellBorderStyle = TableLayoutPanelCellBorderStyle.Single;
@@ -303,7 +306,8 @@ namespace Vibe.SupplyChain.Win
                         tab.Controls.Add(cmb, 1, i);
                         if ((int)attr.Value > 0)
                         {
-                            string name = attr.SelectOptions.FirstOrDefault(o => o.ID == (int)attr.Value).Name;
+                            NamedEntity nent = attr.SelectOptions.FirstOrDefault(o => o.ID == (int)attr.Value);
+                            string name = nent == null ? "" : attr.SelectOptions.FirstOrDefault(o => o.ID == (int)attr.Value).Name;
                             cmb.SelectedIndex = cmb.FindString(name);
                         }
                     }
@@ -355,11 +359,14 @@ namespace Vibe.SupplyChain.Win
                     }
 
                     _manager.Data.Save();
+                    ent.OnCreate();
                     if (btn.Tag != null)
                     {
                         RebindInThread();
                         ShowEntityList(new EntityParam<EntityList>() { EntityList = eParam.EntityList, Node = eParam.Node.Parent });
+                        _manager.Propagate();
                     }
+                    Console.WriteLine(ent.EntityType + ":" + ent.ID + " updated.");
                 }
                 catch (Exception exc)
                 {

@@ -42,9 +42,13 @@ namespace Vibe.SupplyChain.TransactionModel
         {
             get
             {
+                if (NetInvestment == 0)
+                    return 0;
                 return Math.Round((NetProfit * 100) / NetInvestment, 2);
             }
         }
+        [EntityObjectAttribute(DisplayLabel = "Tracking days", Accessibility = Accessibility.Auto)]
+        public int DaysOfTrack { get { return (int)Math.Ceiling(DateTime.Now.Subtract(Root.CreatedOn).TotalDays); } }
         [EntityObjectAttribute(DisplayLabel = "Annual Growth %",
             Accessibility = Accessibility.Auto,
             IsConstraint = true,
@@ -55,7 +59,9 @@ namespace Vibe.SupplyChain.TransactionModel
         {
             get
             {
-                return Math.Round((Math.Pow((NetProfit + NetInvestment) / NetInvestment, (365 / DateTime.Now.Subtract(Root.CreatedOn).TotalDays)) - 1) * 100, 2);
+                if (NetInvestment == 0)
+                    return 0;
+                return Math.Round((Math.Pow((NetProfit + NetInvestment) / NetInvestment, (365 / DaysOfTrack)) - 1) * 100, 2);
             }
         }
         public double NetInvestment

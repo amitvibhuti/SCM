@@ -22,6 +22,7 @@ namespace Vibe.SupplyChain.TransactionModel
                     : Transaction.PartTransaction.TransactionType == TransactionType.Buy ? InventoryElementType.In : InventoryElementType.Out;
             }
         }
+        public Inventory Inventory { get { return (Inventory)Parent; } }
         [EntityObjectAttribute(DisplayLabel = "Date", 
             Sequence = 2,
             Accessibility = Accessibility.Auto)]
@@ -29,7 +30,7 @@ namespace Vibe.SupplyChain.TransactionModel
             get
             {
                  return Transaction == null
-                    ? ((Inventory)Parent).CreatedOn
+                    ? Inventory.CreatedOn
                     : Transaction.PartTransaction.Transaction.Date;
             }
         }
@@ -39,9 +40,15 @@ namespace Vibe.SupplyChain.TransactionModel
             DisplayPrefix = "Root.Currency")]
         public double Rate { get
             {
-                return Transaction == null
-                 ? ((Inventory)Parent).Part.GetTransactionRate(Date).BuyRate
-                 : Transaction.PartTransaction.Rate;
+                if(Transaction==null)
+                {
+                    PartRate rate = Inventory.Part == null ? null : Inventory.Part.GetTransactionRate(Date);
+                    return rate == null ? 0 : rate.BuyRate;
+                }
+                else
+                {
+                    return Transaction.PartTransaction.Rate;
+                }
             }
         }
         [EntityObjectAttribute(DisplayLabel = "Quantity",
@@ -51,7 +58,7 @@ namespace Vibe.SupplyChain.TransactionModel
         public double Quantity { get
             {
                 return (Type == InventoryElementType.In ? 1 : -1) *
-                     (Transaction == null? ((Inventory)Parent).InitialQuantity: Transaction.Quantity);
+                     (Transaction == null? Inventory.InitialQuantity: Transaction.Quantity);
             }
         }
         [EntityObjectAttribute(DisplayLabel = "Inventory Qty",
@@ -60,7 +67,7 @@ namespace Vibe.SupplyChain.TransactionModel
         {
             get
             {
-                return ((Inventory)Parent).Elements.Where(e => e.Date <= Date).Sum(e => e.Quantity);
+                return Inventory.Elements.Where(e => e.Date <= Date).Sum(e => e.Quantity);
             }
         }
         public InventoryPartTransaction Transaction { get; set; }
