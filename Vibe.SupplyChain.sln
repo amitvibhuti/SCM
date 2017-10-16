@@ -1,0 +1,53 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.26730.16
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Vibe.SupplyChain.Win", "Vibe.SupplyChain.Win\Vibe.SupplyChain.Win.csproj", "{114A7851-E5DE-476F-93D3-719145683771}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Vibe.SupplyChain.Data", "Vibe.SupplyChain.Data\Vibe.SupplyChain.Data.csproj", "{1B758885-F57D-4691-9EF5-A13C44DB74E0}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Vibe.SupplyChain", "Vibe.SupplyChain\Vibe.SupplyChain.csproj", "{3A447341-090A-43AA-90A9-F07657896F04}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Vibe.SupplyChain.WinApp", "Vibe.SupplyChain.WinApp\Vibe.SupplyChain.WinApp.csproj", "{B3ADD971-5B46-42F3-9393-8E70B433CFA6}"
+EndProject
+Project("{54435603-DBB4-11D2-8724-00A0C9A8B90C}") = "Vibe.SupplyChain.WinApp.Installer", "Vibe.SupplyChain.WinApp.Installer\Vibe.SupplyChain.WinApp.Installer.vdproj", "{6C56302B-FB78-489E-A44D-E8628F9B3CC9}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Vibe.SupplyChain.TransactionModel", "Vibe.SupplyChain.TransactionModel\Vibe.SupplyChain.TransactionModel.csproj", "{6D2FB276-29DF-4982-B3DA-B3D7840F57A7}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{114A7851-E5DE-476F-93D3-719145683771}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{114A7851-E5DE-476F-93D3-719145683771}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{114A7851-E5DE-476F-93D3-719145683771}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{114A7851-E5DE-476F-93D3-719145683771}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1B758885-F57D-4691-9EF5-A13C44DB74E0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1B758885-F57D-4691-9EF5-A13C44DB74E0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1B758885-F57D-4691-9EF5-A13C44DB74E0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1B758885-F57D-4691-9EF5-A13C44DB74E0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3A447341-090A-43AA-90A9-F07657896F04}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3A447341-090A-43AA-90A9-F07657896F04}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3A447341-090A-43AA-90A9-F07657896F04}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3A447341-090A-43AA-90A9-F07657896F04}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B3ADD971-5B46-42F3-9393-8E70B433CFA6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B3ADD971-5B46-42F3-9393-8E70B433CFA6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B3ADD971-5B46-42F3-9393-8E70B433CFA6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B3ADD971-5B46-42F3-9393-8E70B433CFA6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6C56302B-FB78-489E-A44D-E8628F9B3CC9}.Debug|Any CPU.ActiveCfg = Release
+		{6C56302B-FB78-489E-A44D-E8628F9B3CC9}.Release|Any CPU.ActiveCfg = Release
+		{6D2FB276-29DF-4982-B3DA-B3D7840F57A7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6D2FB276-29DF-4982-B3DA-B3D7840F57A7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6D2FB276-29DF-4982-B3DA-B3D7840F57A7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6D2FB276-29DF-4982-B3DA-B3D7840F57A7}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {5981B254-012B-4636-9A68-B8938005E1F3}
+	EndGlobalSection
+EndGlobal

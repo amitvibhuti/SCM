@@ -1,0 +1,5 @@
+E:\Projects\SupplyChain\Vibe.SupplyChain\Vibe.SupplyChain\bin\Debug\Vibe.SupplyChain.dll
+E:\Projects\SupplyChain\Vibe.SupplyChain\Vibe.SupplyChain\bin\Debug\Vibe.SupplyChain.pdb
+E:\Projects\SupplyChain\Vibe.SupplyChain\Vibe.SupplyChain\obj\Debug\Vibe.SupplyChain.csproj.CoreCompileInputs.cache
+E:\Projects\SupplyChain\Vibe.SupplyChain\Vibe.SupplyChain\obj\Debug\Vibe.SupplyChain.dll
+E:\Projects\SupplyChain\Vibe.SupplyChain\Vibe.SupplyChain\obj\Debug\Vibe.SupplyChain.pdb

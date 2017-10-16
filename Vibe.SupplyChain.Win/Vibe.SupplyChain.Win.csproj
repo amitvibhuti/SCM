@@ -1,0 +1,217 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{114A7851-E5DE-476F-93D3-719145683771}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <RootNamespace>Vibe.SupplyChain.Win</RootNamespace>
+    <AssemblyName>Vibe.SupplyChain.Win</AssemblyName>
+    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="itextsharp, Version=5.5.12.0, Culture=neutral, PublicKeyToken=8354ae6d2174ddca, processorArchitecture=MSIL">
+      <HintPath>..\packages\iTextSharp.5.5.12\lib\itextsharp.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json, Version=10.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.10.0.3\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Windows.Forms.DataVisualization" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Deployment" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="DigitalMeter.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="DigitalMeter.Designer.cs">
+      <DependentUpon>DigitalMeter.cs</DependentUpon>
+    </Compile>
+    <Compile Include="EntityListGraph.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="EntityListGraph.Designer.cs">
+      <DependentUpon>EntityListGraph.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmAddFilter.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmAddFilter.Designer.cs">
+      <DependentUpon>FrmAddFilter.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmCreateView.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmCreateView.Designer.cs">
+      <DependentUpon>FrmCreateView.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmRename.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmRename.Designer.cs">
+      <DependentUpon>FrmRename.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmTableView.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmTableView.Designer.cs">
+      <DependentUpon>FrmTableView.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmTreeView.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmTreeView.Designer.cs">
+      <DependentUpon>FrmTreeView.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmViews.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmViews.Designer.cs">
+      <DependentUpon>FrmViews.cs</DependentUpon>
+    </Compile>
+    <Compile Include="IKPIForm.cs" />
+    <Compile Include="ISupplyChainForm.cs" />
+    <Compile Include="KPIForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="KPIForm.Designer.cs">
+      <DependentUpon>KPIForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ListBoxWriter.cs" />
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Resource.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resource.resx</DependentUpon>
+    </Compile>
+    <Compile Include="SCDataGridView.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="SCDataGridView.Designer.cs">
+      <DependentUpon>SCDataGridView.cs</DependentUpon>
+    </Compile>
+    <Compile Include="SCDataTable.cs" />
+    <Compile Include="SCKPI.cs" />
+    <Compile Include="SCUtility.cs" />
+    <Compile Include="TableView.cs" />
+    <EmbeddedResource Include="DigitalMeter.resx">
+      <DependentUpon>DigitalMeter.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="EntityListGraph.resx">
+      <DependentUpon>EntityListGraph.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmAddFilter.resx">
+      <DependentUpon>FrmAddFilter.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmCreateView.resx">
+      <DependentUpon>FrmCreateView.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmRename.resx">
+      <DependentUpon>FrmRename.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmTableView.resx">
+      <DependentUpon>FrmTableView.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmTreeView.resx">
+      <DependentUpon>FrmTreeView.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmViews.resx">
+      <DependentUpon>FrmViews.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="KPIForm.resx">
+      <DependentUpon>KPIForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <EmbeddedResource Include="Resource.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resource.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SCDataGridView.resx">
+      <DependentUpon>SCDataGridView.cs</DependentUpon>
+    </EmbeddedResource>
+    <None Include="packages.config" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Vibe.SupplyChain.Data\Vibe.SupplyChain.Data.csproj">
+      <Project>{1B758885-F57D-4691-9EF5-A13C44DB74E0}</Project>
+      <Name>Vibe.SupplyChain.Data</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Vibe.SupplyChain\Vibe.SupplyChain.csproj">
+      <Project>{3a447341-090a-43aa-90a9-f07657896f04}</Project>
+      <Name>Vibe.SupplyChain</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\add.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\delete.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Image1.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\success.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\fail.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\none.png" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>

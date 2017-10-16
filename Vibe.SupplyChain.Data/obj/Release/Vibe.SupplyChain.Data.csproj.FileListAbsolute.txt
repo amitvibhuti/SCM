@@ -1,0 +1,9 @@
+E:\Projects\SupplyChain\Vibe.SupplyChain\Vibe.SupplyChain.Data\bin\Release\Vibe.SupplyChain.Data.dll
+E:\Projects\SupplyChain\Vibe.SupplyChain\Vibe.SupplyChain.Data\bin\Release\Vibe.SupplyChain.Data.pdb
+E:\Projects\SupplyChain\Vibe.SupplyChain\Vibe.SupplyChain.Data\bin\Release\System.Configuration.ConfigurationManager.dll
+E:\Projects\SupplyChain\Vibe.SupplyChain\Vibe.SupplyChain.Data\bin\Release\Vibe.SupplyChain.dll
+E:\Projects\SupplyChain\Vibe.SupplyChain\Vibe.SupplyChain.Data\bin\Release\Vibe.SupplyChain.pdb
+E:\Projects\SupplyChain\Vibe.SupplyChain\Vibe.SupplyChain.Data\obj\Release\Vibe.SupplyChain.Data.csprojResolveAssemblyReference.cache
+E:\Projects\SupplyChain\Vibe.SupplyChain\Vibe.SupplyChain.Data\obj\Release\Vibe.SupplyChain.Data.csproj.CoreCompileInputs.cache
+E:\Projects\SupplyChain\Vibe.SupplyChain\Vibe.SupplyChain.Data\obj\Release\Vibe.SupplyChain.Data.dll
+E:\Projects\SupplyChain\Vibe.SupplyChain\Vibe.SupplyChain.Data\obj\Release\Vibe.SupplyChain.Data.pdb

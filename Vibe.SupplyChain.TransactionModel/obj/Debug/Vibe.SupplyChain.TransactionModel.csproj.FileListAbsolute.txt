@@ -1,0 +1,8 @@
+E:\Projects\SupplyChain\Vibe.SupplyChain\Vibe.SupplyChain.TransactionModel\obj\Debug\Vibe.SupplyChain.TransactionModel.csproj.CoreCompileInputs.cache
+E:\Projects\SupplyChain\Vibe.SupplyChain\Vibe.SupplyChain.TransactionModel\bin\Debug\Vibe.SupplyChain.dll
+E:\Projects\SupplyChain\Vibe.SupplyChain\Vibe.SupplyChain.TransactionModel\bin\Debug\Vibe.SupplyChain.pdb
+E:\Projects\SupplyChain\Vibe.SupplyChain\Vibe.SupplyChain.TransactionModel\bin\Debug\Vibe.SupplyChain.TransactionModel.dll
+E:\Projects\SupplyChain\Vibe.SupplyChain\Vibe.SupplyChain.TransactionModel\bin\Debug\Vibe.SupplyChain.TransactionModel.pdb
+E:\Projects\SupplyChain\Vibe.SupplyChain\Vibe.SupplyChain.TransactionModel\obj\Debug\Vibe.SupplyChain.TransactionModel.csprojResolveAssemblyReference.cache
+E:\Projects\SupplyChain\Vibe.SupplyChain\Vibe.SupplyChain.TransactionModel\obj\Debug\Vibe.SupplyChain.TransactionModel.dll
+E:\Projects\SupplyChain\Vibe.SupplyChain\Vibe.SupplyChain.TransactionModel\obj\Debug\Vibe.SupplyChain.TransactionModel.pdb

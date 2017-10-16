@@ -1,0 +1,17 @@
+E:\Projects\SupplyChain\Vibe.SupplyChain\Vibe.SupplyChain.Win\bin\Release\Vibe.SupplyChain.Win.exe.config
+E:\Projects\SupplyChain\Vibe.SupplyChain\Vibe.SupplyChain.Win\bin\Release\Vibe.SupplyChain.Win.exe
+E:\Projects\SupplyChain\Vibe.SupplyChain\Vibe.SupplyChain.Win\bin\Release\Vibe.SupplyChain.Win.pdb
+E:\Projects\SupplyChain\Vibe.SupplyChain\Vibe.SupplyChain.Win\bin\Release\itextsharp.dll
+E:\Projects\SupplyChain\Vibe.SupplyChain\Vibe.SupplyChain.Win\bin\Release\Vibe.SupplyChain.Data.dll
+E:\Projects\SupplyChain\Vibe.SupplyChain\Vibe.SupplyChain.Win\bin\Release\Vibe.SupplyChain.dll
+E:\Projects\SupplyChain\Vibe.SupplyChain\Vibe.SupplyChain.Win\bin\Release\Vibe.SupplyChain.Data.pdb
+E:\Projects\SupplyChain\Vibe.SupplyChain\Vibe.SupplyChain.Win\bin\Release\Vibe.SupplyChain.pdb
+E:\Projects\SupplyChain\Vibe.SupplyChain\Vibe.SupplyChain.Win\bin\Release\itextsharp.xml
+E:\Projects\SupplyChain\Vibe.SupplyChain\Vibe.SupplyChain.Win\obj\Release\Vibe.SupplyChain.Win.csprojResolveAssemblyReference.cache
+E:\Projects\SupplyChain\Vibe.SupplyChain\Vibe.SupplyChain.Win\obj\Release\Vibe.SupplyChain.Win.FrmMain.resources
+E:\Projects\SupplyChain\Vibe.SupplyChain\Vibe.SupplyChain.Win\obj\Release\Vibe.SupplyChain.Win.Properties.Resources.resources
+E:\Projects\SupplyChain\Vibe.SupplyChain\Vibe.SupplyChain.Win\obj\Release\Vibe.SupplyChain.Win.Resource.resources
+E:\Projects\SupplyChain\Vibe.SupplyChain\Vibe.SupplyChain.Win\obj\Release\Vibe.SupplyChain.Win.csproj.GenerateResource.Cache
+E:\Projects\SupplyChain\Vibe.SupplyChain\Vibe.SupplyChain.Win\obj\Release\Vibe.SupplyChain.Win.csproj.CoreCompileInputs.cache
+E:\Projects\SupplyChain\Vibe.SupplyChain\Vibe.SupplyChain.Win\obj\Release\Vibe.SupplyChain.Win.exe
+E:\Projects\SupplyChain\Vibe.SupplyChain\Vibe.SupplyChain.Win\obj\Release\Vibe.SupplyChain.Win.pdb
