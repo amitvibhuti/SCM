@@ -366,7 +366,7 @@ namespace Vibe.SupplyChain.Win
                         ShowEntityList(new EntityParam<EntityList>() { EntityList = eParam.EntityList, Node = eParam.Node.Parent });
                         _manager.Propagate();
                     }
-                    Console.WriteLine(ent.EntityType + ": " + ent.ID + " updated.");
+                    Console.WriteLine(ent.EntityType + "[" + ent.ID + "] updated.");
                 }
                 catch (Exception exc)
                 {
