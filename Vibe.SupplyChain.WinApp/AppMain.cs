@@ -24,8 +24,8 @@ namespace Vibe.SupplyChain.WinApp
             InitializeComponent();
             try
             {
+                _manager = new DataManager((b) => { OnPropagate(); });
                 _selectedForm = new FrmTreeView(_manager);
-                _manager = new DataManager();
                 this.Text = this.Text + " " + Application.ProductVersion;
                 LoadForm(_selectedForm);
                 LoadKPIForm();
@@ -94,10 +94,13 @@ namespace Vibe.SupplyChain.WinApp
             if (_manager != null)
                 _manager.Data.Reset();
             else
-                _manager = DataManager.Reset();
+                _manager = DataManager.Reset((b)=> { OnPropagate(); });
             _selectedForm.Reload();
         }
-
+        void OnPropagate()
+        {
+            LoadKPIForm();
+        }
         private void showJSONDataToolStripMenuItem_Click(object sender, EventArgs e)
         {
             System.IO.File.WriteAllText("temp.txt", _manager.Data.Root.Serialize());

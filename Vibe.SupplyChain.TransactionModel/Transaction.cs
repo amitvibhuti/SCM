@@ -9,7 +9,7 @@ namespace Vibe.SupplyChain.TransactionModel
 {
     public enum TransactionType { Buy, Sell}
     [DataContract]
-    public class Transaction : Entity
+    public class Transaction : DatedEntity
     {
         [DataMember]
         [EntityObjectAttribute(DisplayLabel = "Transaction Type", 
@@ -17,12 +17,7 @@ namespace Vibe.SupplyChain.TransactionModel
             SelectOptions = "Enum|Vibe.SupplyChain.TransactionModel.TransactionType, Vibe.SupplyChain.TransactionModel", 
             Accessibility = Accessibility.Edit)]
         public TransactionType TransactionType { get; set; }
-        DateTime _date = DateTime.Today;
-        [DataMember]
-        [EntityObjectAttribute(Mandate = Mandate.Required, 
-            Sequence = 3,
-            Accessibility = Accessibility.Edit)]
-        public DateTime Date { get { return _date; } set { _date = value; } }
+        
         [DataMember]
         [EntityObjectAttribute(DisplayLabel = "Invoice details")]
         public List<PartTransaction> PartTransactions { get; set; }

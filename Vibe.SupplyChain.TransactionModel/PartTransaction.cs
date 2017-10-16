@@ -41,7 +41,7 @@ namespace Vibe.SupplyChain.TransactionModel
             {
                 if (Part == null)
                     return 0;
-                PartRate prate = Part.GetTransactionRate(((Transaction)this.Parent).Date);
+                PartRate prate = Part.CurrentRate;
                 if (prate == null)
                     return 0;
                 return TransactionType == TransactionType.Sell ? prate.SellRate : prate.BuyRate;

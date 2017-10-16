@@ -12,6 +12,25 @@ namespace Vibe.SupplyChain.TransactionModel
     {
         public Inventory(Entity parent) : base(parent)
         {}
+        public Inventory(Entity parent, Part part) : base(parent)
+        {
+            PartId = part.ID;
+        }
+        string _name = "";
+        [DataMember]
+        [EntityObjectAttribute(Mandate = Mandate.Required, Sequence = 2, Accessibility = Accessibility.Edit)]
+        public override string Name {
+            get
+            {
+                if (String.IsNullOrEmpty(_name))
+                    return Part.Name + " inventory";
+                return _name;
+            }
+            set
+            {
+                _name = value;
+            }
+        }
         [DataMember]
         [EntityObjectAttribute(SelectOptions = "Root.Parts", 
             Sequence = 3,

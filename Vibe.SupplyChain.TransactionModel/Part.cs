@@ -14,15 +14,19 @@ namespace Vibe.SupplyChain.TransactionModel
         public List<PartRate> RateHistory { get; set; }
         public Part(Entity parent) : base(parent)
         {
-            RateHistory = new List<PartRate>();
+            RateHistory = new List<PartRate>();            
+        }
+        public override void OnCreate()
+        {
+            base.OnCreate();
+            ((Company)Root).Inventories.Add(new Inventory(Parent, this));
         }
         [EntityObjectAttribute(DisplayLabel = "Buy rate", Accessibility = Accessibility.Auto, DisplayPrefix = "Root.Currency")]
         public double CurrentBuyRate
         {
             get
             {
-                PartRate pr = GetTransactionRate(DateTime.Now);
-                return pr == null ? 0 : pr.BuyRate;
+                return CurrentRate == null ? 0 : CurrentRate.BuyRate;
             }
         }
         [EntityObjectAttribute(DisplayLabel = "Sell rate", Accessibility = Accessibility.Auto, DisplayPrefix = "Root.Currency")]
@@ -30,8 +34,14 @@ namespace Vibe.SupplyChain.TransactionModel
         {
             get
             {
-                PartRate pr = GetTransactionRate(DateTime.Now);
-                return pr == null ? 0 : pr.SellRate;
+                return CurrentRate == null ? 0 : CurrentRate.SellRate;
+            }
+        }
+        public PartRate CurrentRate
+        {
+            get
+            {
+                return GetTransactionRate(DateTime.Now);
             }
         }
         public PartRate GetTransactionRate(DateTime dt)
@@ -49,6 +59,8 @@ namespace Vibe.SupplyChain.TransactionModel
             IEnumerable<Inventory> invs = ((Company)Root).Inventories.Where(i => i.PartId == ID);
             double spentOnDate = invs.Sum(i => i.GetBuyPriceTillDate(date));
             double boughtQty = invs.Sum(i => i.GetBoughtQuantityTillDate(date));
+            if (boughtQty == 0)
+                return 0;
             return spentOnDate / boughtQty;
         }
         public override string ToString()

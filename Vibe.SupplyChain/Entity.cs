@@ -83,6 +83,8 @@ namespace Vibe.SupplyChain
         [DataMember]
         [EntityObjectAttribute(Accessibility = Accessibility.Auto, Sequence = 1, Width = 60)]
         public int ID { get; set; }
+        public virtual void OnCreate()
+        { }
         public string Serialize()
         {
             Console.WriteLine("Entity Serializing");
@@ -145,7 +147,6 @@ namespace Vibe.SupplyChain
         }
         public static T Deserialize<T>(string json) where T:Entity
         {
-            Console.WriteLine("Entity Deserializing");
             try
             {
                 using (var ms = new MemoryStream(Encoding.Unicode.GetBytes(json)))
@@ -161,7 +162,6 @@ namespace Vibe.SupplyChain
         }
         public static Entity Deserialize(Type type, string json)
         {
-            Console.WriteLine("Entity Deserializing");
             try
             {
                 using (var ms = new MemoryStream(Encoding.Unicode.GetBytes(json)))
