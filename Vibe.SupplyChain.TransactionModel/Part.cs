@@ -16,9 +16,9 @@ namespace Vibe.SupplyChain.TransactionModel
         {
             RateHistory = new List<PartRate>();            
         }
-        public override void OnCreate()
+        public override void OnUpdated()
         {
-            base.OnCreate();
+            base.OnUpdated();
             ((Company)Root).Inventories.Add(new Inventory(Parent, this));
         }
         [EntityObjectAttribute(DisplayLabel = "Buy rate", Accessibility = Accessibility.Auto, DisplayPrefix = "Root.Currency")]

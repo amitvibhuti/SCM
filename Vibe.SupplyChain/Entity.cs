@@ -83,8 +83,18 @@ namespace Vibe.SupplyChain
         [DataMember]
         [EntityObjectAttribute(Accessibility = Accessibility.Auto, Sequence = 1, Width = 60)]
         public int ID { get; set; }
-        public virtual void OnCreate()
+        [EntityObjectAttribute(Accessibility = Accessibility.NoView)]
+        public Entity Clone
+        {
+            get { return (Entity)this.MemberwiseClone(); }
+        }
+        public virtual void OnUpdated()
         { }
+        public virtual bool CanUpdate(Entity newValue, out string feedback)
+        {
+            feedback = "";
+            return true;
+        }
         public string Serialize()
         {
             Console.WriteLine("Entity Serializing");
@@ -95,6 +105,7 @@ namespace Vibe.SupplyChain
             StreamReader sr = new StreamReader(msObj);
             return sr.ReadToEnd();
         }
+        [EntityObjectAttribute(Accessibility = Accessibility.NoView)]
         public RootEntity Root
         {
             get
@@ -384,6 +395,7 @@ namespace Vibe.SupplyChain
                 .Where(t => !t.Type.Equals(type) && Entity.GetListItemType(t.Type).Any(tp => tp.Type == type)).ToList();
             return immediateParent.Union(immediateParent.SelectMany(t => GetParents(rootEntity, t.Type))).ToList();
         }
+        
         public List<EntityList> List
         {
             get
@@ -419,6 +431,22 @@ namespace Vibe.SupplyChain
                 }
                 return retValue;
             }
+        }
+        public static List<Type> GetEntityListTypes(Type type)
+        {
+                List<Type> retValue = new List<Type>();
+                PropertyInfo[] pInfos = type.GetProperties();
+                foreach (PropertyInfo pInfo in pInfos)
+                {
+                    if (!typeof(IEnumerable<Entity>).IsAssignableFrom(pInfo.PropertyType)
+                        || typeof(EntityProperty).IsAssignableFrom(pInfo.PropertyType)
+                        || typeof(EntityList).IsAssignableFrom(pInfo.PropertyType)
+                        || typeof(List<EntityProperty>).IsAssignableFrom(pInfo.PropertyType)
+                        || typeof(List<EntityList>).IsAssignableFrom(pInfo.PropertyType))
+                        continue;
+                    retValue.Add(pInfo.PropertyType.GetGenericArguments()[0]);
+                }
+                return retValue;
         }
         public List<EntityKeyType> GetChildTypes()
         {

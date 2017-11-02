@@ -54,3 +54,4 @@ E:\Projects\GIT\SCM\Vibe.SupplyChain.Win\obj\Debug\Vibe.SupplyChain.Win.csproj.G
 E:\Projects\GIT\SCM\Vibe.SupplyChain.Win\obj\Debug\Vibe.SupplyChain.Win.csproj.CoreCompileInputs.cache
 E:\Projects\GIT\SCM\Vibe.SupplyChain.Win\obj\Debug\Vibe.SupplyChain.Win.exe
 E:\Projects\GIT\SCM\Vibe.SupplyChain.Win\obj\Debug\Vibe.SupplyChain.Win.pdb
+E:\Projects\GIT\SCM\Vibe.SupplyChain.Win\obj\Debug\Vibe.SupplyChain.Win.FrmModelOverview.resources

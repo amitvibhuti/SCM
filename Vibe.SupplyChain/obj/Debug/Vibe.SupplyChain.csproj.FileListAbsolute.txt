@@ -8,3 +8,4 @@ E:\Projects\GIT\SCM\Vibe.SupplyChain\bin\Debug\Vibe.SupplyChain.pdb
 E:\Projects\GIT\SCM\Vibe.SupplyChain\obj\Debug\Vibe.SupplyChain.csproj.CoreCompileInputs.cache
 E:\Projects\GIT\SCM\Vibe.SupplyChain\obj\Debug\Vibe.SupplyChain.dll
 E:\Projects\GIT\SCM\Vibe.SupplyChain\obj\Debug\Vibe.SupplyChain.pdb
+E:\Projects\GIT\SCM\Vibe.SupplyChain\obj\Debug\Vibe.SupplyChain.csprojResolveAssemblyReference.cache

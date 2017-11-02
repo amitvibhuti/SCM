@@ -30,9 +30,6 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(AppMain));
             this.toolStrip1 = new System.Windows.Forms.ToolStrip();
-            this.pnlBody = new System.Windows.Forms.Panel();
-            this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
-            this.pnlKPI = new System.Windows.Forms.Panel();
             this.toolStripDropDownButton2 = new System.Windows.Forms.ToolStripDropDownButton();
             this.treeViewToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.ordersToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -49,6 +46,10 @@
             this.toolStripDropDownButton3 = new System.Windows.Forms.ToolStripDropDownButton();
             this.learnToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.contactUsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.pnlBody = new System.Windows.Forms.Panel();
+            this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
+            this.pnlKPI = new System.Windows.Forms.Panel();
+            this.modelOverviewToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -63,26 +64,6 @@
             this.toolStrip1.Size = new System.Drawing.Size(895, 25);
             this.toolStrip1.TabIndex = 5;
             this.toolStrip1.Text = "toolStrip1";
-            // 
-            // pnlBody
-            // 
-            this.pnlBody.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.pnlBody.Location = new System.Drawing.Point(0, 94);
-            this.pnlBody.Name = "pnlBody";
-            this.pnlBody.Size = new System.Drawing.Size(895, 266);
-            this.pnlBody.TabIndex = 6;
-            // 
-            // openFileDialog1
-            // 
-            this.openFileDialog1.FileName = "openFileDialog1";
-            // 
-            // pnlKPI
-            // 
-            this.pnlKPI.Dock = System.Windows.Forms.DockStyle.Top;
-            this.pnlKPI.Location = new System.Drawing.Point(0, 25);
-            this.pnlKPI.Name = "pnlKPI";
-            this.pnlKPI.Size = new System.Drawing.Size(895, 69);
-            this.pnlKPI.TabIndex = 0;
             // 
             // toolStripDropDownButton2
             // 
@@ -103,14 +84,14 @@
             // treeViewToolStripMenuItem
             // 
             this.treeViewToolStripMenuItem.Name = "treeViewToolStripMenuItem";
-            this.treeViewToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.treeViewToolStripMenuItem.Size = new System.Drawing.Size(136, 22);
             this.treeViewToolStripMenuItem.Text = "Tree View";
             this.treeViewToolStripMenuItem.Click += new System.EventHandler(this.treeViewToolStripMenuItem_Click);
             // 
             // ordersToolStripMenuItem
             // 
             this.ordersToolStripMenuItem.Name = "ordersToolStripMenuItem";
-            this.ordersToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.ordersToolStripMenuItem.Size = new System.Drawing.Size(136, 22);
             this.ordersToolStripMenuItem.Text = "Orders";
             this.ordersToolStripMenuItem.Visible = false;
             this.ordersToolStripMenuItem.Click += new System.EventHandler(this.ordersToolStripMenuItem_Click);
@@ -118,7 +99,7 @@
             // inventoryToolStripMenuItem
             // 
             this.inventoryToolStripMenuItem.Name = "inventoryToolStripMenuItem";
-            this.inventoryToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.inventoryToolStripMenuItem.Size = new System.Drawing.Size(136, 22);
             this.inventoryToolStripMenuItem.Text = "Inventory";
             this.inventoryToolStripMenuItem.Visible = false;
             this.inventoryToolStripMenuItem.Click += new System.EventHandler(this.inventoryToolStripMenuItem_Click);
@@ -126,19 +107,19 @@
             // toolStripSeparator1
             // 
             this.toolStripSeparator1.Name = "toolStripSeparator1";
-            this.toolStripSeparator1.Size = new System.Drawing.Size(149, 6);
+            this.toolStripSeparator1.Size = new System.Drawing.Size(133, 6);
             // 
             // createViewToolStripMenuItem
             // 
             this.createViewToolStripMenuItem.Name = "createViewToolStripMenuItem";
-            this.createViewToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.createViewToolStripMenuItem.Size = new System.Drawing.Size(136, 22);
             this.createViewToolStripMenuItem.Text = "Create View";
             this.createViewToolStripMenuItem.Click += new System.EventHandler(this.createViewToolStripMenuItem_Click);
             // 
             // myViewsToolStripMenuItem
             // 
             this.myViewsToolStripMenuItem.Name = "myViewsToolStripMenuItem";
-            this.myViewsToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.myViewsToolStripMenuItem.Size = new System.Drawing.Size(136, 22);
             this.myViewsToolStripMenuItem.Text = "My Views";
             // 
             // toolStripDropDownButton1
@@ -158,9 +139,10 @@
             this.developerToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.resetToolStripMenuItem,
             this.showJSONDataToolStripMenuItem,
-            this.uploadJSONToolStripMenuItem});
+            this.uploadJSONToolStripMenuItem,
+            this.modelOverviewToolStripMenuItem});
             this.developerToolStripMenuItem.Name = "developerToolStripMenuItem";
-            this.developerToolStripMenuItem.Size = new System.Drawing.Size(144, 22);
+            this.developerToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.developerToolStripMenuItem.Text = "Developer";
             // 
             // resetToolStripMenuItem
@@ -187,7 +169,7 @@
             // manageViewToolStripMenuItem
             // 
             this.manageViewToolStripMenuItem.Name = "manageViewToolStripMenuItem";
-            this.manageViewToolStripMenuItem.Size = new System.Drawing.Size(144, 22);
+            this.manageViewToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.manageViewToolStripMenuItem.Text = "Manage view";
             this.manageViewToolStripMenuItem.Click += new System.EventHandler(this.manageViewToolStripMenuItem_Click);
             // 
@@ -216,6 +198,33 @@
             this.contactUsToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.contactUsToolStripMenuItem.Text = "Contact us";
             this.contactUsToolStripMenuItem.Click += new System.EventHandler(this.contactUsToolStripMenuItem_Click);
+            // 
+            // pnlBody
+            // 
+            this.pnlBody.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.pnlBody.Location = new System.Drawing.Point(0, 94);
+            this.pnlBody.Name = "pnlBody";
+            this.pnlBody.Size = new System.Drawing.Size(895, 266);
+            this.pnlBody.TabIndex = 6;
+            // 
+            // openFileDialog1
+            // 
+            this.openFileDialog1.FileName = "openFileDialog1";
+            // 
+            // pnlKPI
+            // 
+            this.pnlKPI.Dock = System.Windows.Forms.DockStyle.Top;
+            this.pnlKPI.Location = new System.Drawing.Point(0, 25);
+            this.pnlKPI.Name = "pnlKPI";
+            this.pnlKPI.Size = new System.Drawing.Size(895, 69);
+            this.pnlKPI.TabIndex = 0;
+            // 
+            // modelOverviewToolStripMenuItem
+            // 
+            this.modelOverviewToolStripMenuItem.Name = "modelOverviewToolStripMenuItem";
+            this.modelOverviewToolStripMenuItem.Size = new System.Drawing.Size(160, 22);
+            this.modelOverviewToolStripMenuItem.Text = "Model overview";
+            this.modelOverviewToolStripMenuItem.Click += new System.EventHandler(this.modelOverviewToolStripMenuItem_Click);
             // 
             // AppMain
             // 
@@ -258,6 +267,7 @@
         private System.Windows.Forms.ToolStripDropDownButton toolStripDropDownButton3;
         private System.Windows.Forms.ToolStripMenuItem learnToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem contactUsToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem modelOverviewToolStripMenuItem;
     }
 }
 

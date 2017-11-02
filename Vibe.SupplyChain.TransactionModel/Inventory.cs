@@ -10,10 +10,11 @@ namespace Vibe.SupplyChain.TransactionModel
     [DataContract]
     public class Inventory : NamedEntity
     {
-        public Inventory(Entity parent) : base(parent)
-        {}
+        public Inventory(Entity parent) : this(parent, null)
+        { }
         public Inventory(Entity parent, Part part) : base(parent)
         {
+            Requests = new List<DemandRequest>();
             PartId = part.ID;
         }
         string _name = "";
@@ -54,6 +55,20 @@ namespace Vibe.SupplyChain.TransactionModel
                                 .Where(ipt => ipt.InventoryId == this.ID)))).ToList();
             }
         }
+        [DataMember]
+        [EntityObjectAttribute(DisplayLabel = "Demand Requests", Accessibility = Accessibility.Edit)]
+        public List<DemandRequest> Requests { get; set; }
+        [EntityObjectAttribute(DisplayLabel = "Has active requests", Accessibility = Accessibility.Auto)]
+        public bool HasActiveRequests { get { return Requests !=null && Requests.Exists(r => r.IsActive); } }
+        public void DoPostTransactionActivity()
+        {
+            if (Requests == null)
+                Requests = new List<DemandRequest>();
+            if (!HasActiveRequests && RequestTriggerLimit >= Quantity)
+            {
+                Requests.Add(new DemandRequest(this) { Quantity = TopUpQuantity });
+            }
+        }
         [EntityObjectAttribute(Mandate = Mandate.Required, 
             Sequence = 6,
             Accessibility = Accessibility.Auto, 
@@ -74,6 +89,21 @@ namespace Vibe.SupplyChain.TransactionModel
             Sequence = 4,
             Accessibility = Accessibility.Edit)]
         public int Capacity { get; set; }
+        [DataMember]
+        [EntityObjectAttribute(Mandate = Mandate.Required,
+            Sequence = 5,
+            Accessibility = Accessibility.Edit)]
+        public double RequestTriggerLimit { get; set; }
+        [DataMember]
+        [EntityObjectAttribute(Mandate = Mandate.Required,
+            Sequence = 5,
+            Accessibility = Accessibility.Edit)]
+        public double DeadLimit { get; set; }
+        [DataMember]
+        [EntityObjectAttribute(Mandate = Mandate.Required,
+            Sequence = 5,
+            Accessibility = Accessibility.Edit)]
+        public double TopUpQuantity { get; set; }
         [EntityObjectAttribute(DisplayLabel = "Elements", 
             ShowChart = "Area,Matterial flow,Date,PostTransactionInventoryQuantity",
             Accessibility = Accessibility.Auto)]

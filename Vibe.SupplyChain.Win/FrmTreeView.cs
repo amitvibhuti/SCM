@@ -198,10 +198,16 @@ namespace Vibe.SupplyChain.Win
         void AddToContextMenu(TreeNode node, EntityList elist, Entity ent)
         {
             contextMenuStrip1.Items.Add("Add " + elist.ItemType.Name, Resource.add, (s, e1) => {
-                Entity enew = elist.CreateItem(ent);
-                EntityParam<Entity> neweParam = new EntityParam<Entity>() { EntityList = elist, Entity = enew, Node = node.Nodes.Add(enew.ID.ToString(), enew.ToString()) };
-                EditEntity(neweParam);
-                RebindInThread();
+                string feedback = "";
+                if (elist.CanCreateItem(ent, out feedback))
+                {
+                    Entity enew = elist.CreateItem(ent);
+                    EntityParam<Entity> neweParam = new EntityParam<Entity>() { EntityList = elist, Entity = enew, Node = node.Nodes.Add(enew.ID.ToString(), enew.ToString()) };
+                    EditEntity(neweParam);
+                    RebindInThread();
+                }
+                else
+                    MessageBox.Show(feedback);
             });
         }
         private void treeViewRoot_AfterSelect(object sender, TreeViewEventArgs e)
@@ -336,30 +342,17 @@ namespace Vibe.SupplyChain.Win
             {
                 try
                 {
-                    foreach (EntityProperty attr in ent.Properties)
+                    Entity entTemp = ent.Clone;
+                    FillEntity(tabEdit, entTemp);
+                    string feedback = "";
+                    if (!ent.CanUpdate(entTemp, out feedback))
                     {
-                        if (attr.IsSelect)
-                        {
-                            Control[] ctrls = tabEdit.Controls.Find("cmb" + attr.Name, false);
-                            int idValue = (int)((ComboBox)ctrls[0]).SelectedValue;
-                            attr.SetSelectionValue(idValue);
-                        }
-                        
-                        else if (attr.IsEditable)
-                        {
-                            Control[] ctrls = tabEdit.Controls.Find("txt" + attr.Name, false);
-                            string txtValue = ((TextBox)ctrls[0]).Text;
-                            if (String.IsNullOrEmpty(txtValue.Trim()) && attr.IsRequired)
-                            {
-                                MessageBox.Show(attr.Name + " is required.");
-                                return;
-                            }
-                            attr.SetValue(txtValue);
-                        }
+                        MessageBox.Show(feedback);
+                        return;
                     }
-
+                    FillEntity(tabEdit, ent);
                     _manager.Data.Save();
-                    ent.OnCreate();
+                    ent.OnUpdated();
                     if (btn.Tag != null)
                     {
                         RebindInThread();
@@ -375,6 +368,30 @@ namespace Vibe.SupplyChain.Win
             };
             tabEdit.Controls.Add(btn, 1, ++iEdit);
         }        
+        void FillEntity(TableLayoutPanel tabEdit, Entity ent)
+        {
+            foreach (EntityProperty attr in ent.Properties)
+            {
+                if (attr.IsSelect)
+                {
+                    Control[] ctrls = tabEdit.Controls.Find("cmb" + attr.Name, false);
+                    int idValue = (int)((ComboBox)ctrls[0]).SelectedValue;
+                    attr.SetSelectionValue(idValue);
+                }
+
+                else if (attr.IsEditable)
+                {
+                    Control[] ctrls = tabEdit.Controls.Find("txt" + attr.Name, false);
+                    string txtValue = ((TextBox)ctrls[0]).Text;
+                    if (String.IsNullOrEmpty(txtValue.Trim()) && attr.IsRequired)
+                    {
+                        MessageBox.Show(attr.Name + " is required.");
+                        return;
+                    }
+                    attr.SetValue(txtValue);
+                }
+            }
+        }
         private void btnExportToPDF_Click(object sender, EventArgs e)
         {
             EntityList elist = (EntityList)pnlEntity.Tag;

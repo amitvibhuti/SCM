@@ -48,6 +48,7 @@
     <Compile Include="InventoryElement.cs" />
     <Compile Include="InventoryPartTransaction.cs" />
     <Compile Include="Part.cs" />
+    <Compile Include="DemandRequest.cs" />
     <Compile Include="PartTransaction.cs" />
     <Compile Include="PartRate.cs" />
     <Compile Include="Payment.cs" />

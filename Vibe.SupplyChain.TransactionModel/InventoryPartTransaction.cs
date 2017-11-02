@@ -86,5 +86,23 @@ namespace Vibe.SupplyChain.TransactionModel
                 + (Inventory == null ? "" : Inventory.Name) 
                 + " [" + Quantity + "]";
         }
+        public override bool CanUpdate(Entity newValue, out string feedback)
+        {
+            feedback = "OK";
+            double newQty = ((InventoryPartTransaction)newValue).Quantity;
+            Inventory inv = ((InventoryPartTransaction)newValue).Inventory;
+            double maxQty = inv.Quantity + this.Quantity - inv.DeadLimit;
+            if (newQty > maxQty)
+            {
+                feedback = "Transaction failed: Transaction will result in violating dead limit which is configured to " + inv.DeadLimit + ".\r\n" +
+                    "Maximum transacted quantity must be " + maxQty + " or less.";
+                return false;
+            }
+            else return true;
+        }
+        public override void OnUpdated()
+        {
+            Inventory.DoPostTransactionActivity();
+        }
     }
 }

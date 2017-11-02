@@ -92,6 +92,11 @@ namespace Vibe.SupplyChain
             Entity = ent;
             Property = pInfo;
         }
+        public bool CanCreateItem(Entity parent, out string feedback)
+        {
+            feedback = "";
+            return true;
+        }
         public Entity CreateItem(Entity parent)
         {
             Entity enew = (Entity)Activator.CreateInstance(this.ItemType, new object[] { parent });

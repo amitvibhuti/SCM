@@ -174,7 +174,13 @@ namespace Vibe.SupplyChain.WinApp
 
         private void contactUsToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            MessageBox.Show("You are currently using an evaluation software. Please write to us to get a licensed sofware. \r\n vibhuti.amit@gmail.com");
+            MessageBox.Show("You are currently using an evaluation software. Please write to us to get a licensed software. \r\n vibhuti.amit@gmail.com");
+        }
+
+        private void modelOverviewToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            _selectedForm = new FrmModelOverview(_manager);
+            LoadForm(_selectedForm);
         }
     }
 }

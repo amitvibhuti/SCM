@@ -112,6 +112,7 @@ namespace Vibe.SupplyChain.TransactionModel
         public Transaction(Entity parent) : base(parent)
         {
             PartTransactions = new List<PartTransaction>();
+            Date = DateTime.Now;
         }
         public override string ToString()
         {
